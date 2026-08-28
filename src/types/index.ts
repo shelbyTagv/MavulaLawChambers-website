@@ -11,7 +11,8 @@ export interface ExpertiseArea {
   id: number;
   title: string;
   image: string;
-  description: string;
+  description?: string;
+  items?: string[];
 }
 
 export interface NewsItem {

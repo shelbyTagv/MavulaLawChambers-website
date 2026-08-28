@@ -1,6 +1,7 @@
 import PageHeader from "../components/ui/PageHeader";
 import Seo from "../components/Seo";
 import { pageMeta } from "../seo/siteMeta";
+import { mission, values, valuesIntro, vision } from "../data/aboutContent";
 
 export default function AboutUs() {
   return (
@@ -58,6 +59,35 @@ export default function AboutUs() {
                   alt="Mavula & Co. Law Chambers legal excellence in Plumtree, Zimbabwe"
                   className="relative w-full h-96 lg:h-[500px] object-cover rounded-lg shadow-2xl"
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 sm:py-20 bg-brand-dark border-t border-gray-800">
+          <div className="section-container">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              <div className="card-dark p-6">
+                <h3 className="text-2xl font-heading font-bold text-gold mb-4">Vision</h3>
+                <p className="text-gray-300 font-body leading-relaxed">{vision}</p>
+              </div>
+
+              <div className="card-dark p-6">
+                <h3 className="text-2xl font-heading font-bold text-gold mb-4">Mission</h3>
+                <p className="text-gray-300 font-body leading-relaxed">{mission}</p>
+              </div>
+
+              <div className="card-dark p-6 lg:col-span-1">
+                <h3 className="text-2xl font-heading font-bold text-gold mb-4">Values</h3>
+                <p className="mb-4 text-gray-300 font-body leading-relaxed">{valuesIntro}</p>
+                <div className="grid grid-cols-1 gap-3">
+                  {values.map((value) => (
+                    <div key={value.id} className="rounded-lg border border-gray-800 bg-brand-black/40 p-3">
+                      <h4 className="text-sm font-heading font-bold text-gold">{value.title}</h4>
+                      <p className="mt-1 text-sm text-gray-300 font-body">{value.description}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
