@@ -16,11 +16,11 @@ export default function Hero() {
       <div className="relative z-10 h-full flex items-center">
         <div className="section-container">
           <div className="max-w-2xl">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white leading-tight mb-4 animate-fade-in">
-              OUR EXPERTISE
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white leading-tight mb-4 animate-fade-in">
+              MAVULA &amp; CO.
               <br />
-              <span className="gold-gradient-text">IS YOURS</span>
-            </h2>
+              <span className="gold-gradient-text">LAW CHAMBERS</span>
+            </h1>
             <div className="w-20 h-1 bg-gold mb-6" />
             <p className="text-gold text-lg sm:text-xl font-heading font-semibold tracking-[0.15em] mb-4">
               TRUSTED. DILIGENT. DETERMINED.

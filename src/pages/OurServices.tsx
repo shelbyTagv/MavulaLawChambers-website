@@ -1,5 +1,7 @@
 import { services } from "../data/services";
 import PageHeader from "../components/ui/PageHeader";
+import Seo from "../components/Seo";
+import { pageMeta } from "../seo/siteMeta";
 
 const serviceIcons: Record<string, React.ReactNode> = {
   scales: (
@@ -48,38 +50,41 @@ const serviceIcons: Record<string, React.ReactNode> = {
 
 export default function OurServices() {
   return (
-    <main>
-      <PageHeader
-        title="Our Services"
-        subtitle="Comprehensive legal solutions tailored to your needs"
-      />
+    <>
+      <Seo title={pageMeta.services.title} description={pageMeta.services.description} path="/services" />
+      <main>
+        <PageHeader
+          title="Our Services"
+          subtitle="Comprehensive legal solutions tailored to your needs"
+        />
 
-      <section className="py-16 sm:py-20">
-        <div className="section-container">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service) => (
-              <div
-                key={service.id}
-                className="card-dark p-6 text-center group hover:-translate-y-1"
-              >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold/20 group-hover:border-gold/40 transition-all duration-300">
-                  {serviceIcons[service.icon] || (
-                    <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  )}
+        <section className="py-16 sm:py-20">
+          <div className="section-container">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {services.map((service) => (
+                <div
+                  key={service.id}
+                  className="card-dark p-6 text-center group hover:-translate-y-1"
+                >
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold/20 group-hover:border-gold/40 transition-all duration-300">
+                    {serviceIcons[service.icon] || (
+                      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    )}
+                  </div>
+                  <h3 className="text-lg font-heading font-bold text-white mb-3 group-hover:text-gold transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm font-body">
+                    {service.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-heading font-bold text-white mb-3 group-hover:text-gold transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-gray-400 text-sm font-body">
-                  {service.description}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 }
