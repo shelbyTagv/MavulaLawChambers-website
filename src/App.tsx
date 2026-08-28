@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import WhatsAppButton from "./components/layout/WhatsAppButton";
+import { IS_COMING_SOON } from "./config/siteConfig";
+import ComingSoon from "./pages/ComingSoon";
 
 // Pages
 import Home from "./pages/Home";
@@ -26,6 +28,10 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  if (IS_COMING_SOON) {
+    return <ComingSoon />;
+  }
+
   return (
     <Router>
       <ScrollToTop />

@@ -35,8 +35,26 @@
     @apply bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent;
   }
 
+  .coming-soon-heading {
+    @apply bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent font-heading font-black tracking-[0.1em];
+    background-size: 200% 100%;
+    animation: shimmer 8s ease-in-out infinite;
+  }
+
   .card-dark {
     @apply bg-brand-charcoal border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/10;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
