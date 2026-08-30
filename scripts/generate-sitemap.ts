@@ -1,8 +1,19 @@
 import fs from "node:fs";
 import path from "node:path";
-import { newsItems } from "../src/data/news";
+import type { NewsItem } from "../src/types";
 
 const baseUrl = "https://mavulalawchambers.co.zw";
+
+// Load news items from JSON files directly
+const contentDir = path.resolve(process.cwd(), "content", "news");
+const newsFiles = fs.readdirSync(contentDir).filter((f) => f.endsWith(".json"));
+const newsItems: NewsItem[] = newsFiles
+  .map((file) => {
+    const content = fs.readFileSync(path.join(contentDir, file), "utf-8");
+    return JSON.parse(content) as NewsItem;
+  })
+  .sort((a, b) => b.id - a.id);
+
 const routes = [
   "/",
   "/about",
