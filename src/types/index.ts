@@ -15,14 +15,19 @@ export interface ExpertiseArea {
   items?: string[];
 }
 
+export type NewsItemType = "article" | "notice";
+
 export interface NewsItem {
   id: number;
+  type: NewsItemType;
   slug?: string;
   title: string;
-  excerpt: string;
-  body: string;
+  excerpt: string; // short description, always shown on the card
+  body?: string; // full content — required for "article" type, unused for "notice"
+  pdfUrl?: string; // path to the PDF in /public — required for "notice" type
   image: string;
   date: string;
+  category?: string; // e.g. "Court Notices", "ZIMRA Notices", "Statutory Instruments"
   author?: string;
 }
 

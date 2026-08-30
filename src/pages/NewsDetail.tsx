@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { newsItems } from "../data/news";
 import Seo from "../components/Seo";
 
@@ -20,9 +20,18 @@ export default function NewsDetail() {
     }
   }, [article]);
 
-  // Related articles (all except current)
+  const navigate = useNavigate();
+
+  // If this id is a notice (PDF), redirect back to the news index
+  useEffect(() => {
+    if (article && article.type === "notice") {
+      navigate("/news", { replace: true });
+    }
+  }, [article, navigate]);
+
+  // Related articles: show other articles (exclude notices)
   const relatedArticles = article
-    ? newsItems.filter((item) => item.id !== article.id).slice(0, 3)
+    ? newsItems.filter((item) => item.id !== article.id && item.type === "article").slice(0, 3)
     : [];
 
   if (!article) {
@@ -49,8 +58,8 @@ export default function NewsDetail() {
     );
   }
 
-  // Split body into paragraphs
-  const paragraphs = article.body.split("\n\n").filter(Boolean);
+  // Split body into paragraphs (if present)
+  const paragraphs = (article.body || "").split("\n\n").filter(Boolean);
 
   return (
     <>
