@@ -18,6 +18,7 @@ Furthermore, compliance with regulatory bodies, foreign currency exchange regula
   },
   {
     id: 2,
+    type: "article",
     slug: "estate-planning-and-deceased-estates-guide",
     title: "Comprehensive Guide to Deceased Estates & Succession Planning",
     excerpt: "Protecting family legacies and assets requires proactive estate planning. Learn about wills, trust registrations, and estate administration in Zimbabwe.",
@@ -32,6 +33,7 @@ Additionally, family trust registration provides an effective legal framework fo
   },
   {
     id: 3,
+    type: "article",
     slug: "conveyancing-property-transfer-updates",
     title: "Understanding Property Transfers & Deeds Registration",
     excerpt: "A step-by-step overview of conveyancing processes, title deed verifications, and property acquisition safeguards in Zimbabwean real estate.",
