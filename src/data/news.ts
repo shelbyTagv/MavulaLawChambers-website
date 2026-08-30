@@ -1,9 +1,9 @@
 import type { NewsItem } from "../types";
 
-export const newsItems: NewsItem[] = [
+export const newsItems: NewsItem[] = ([
   {
     id: 110,
-    type: "notice",
+    type: "notice" as const,
     title: "Deeds Registries Regulations, 2025",
     excerpt:
       "Statutory Instrument 76 of 2025 — the full regulations governing deed validation, securitisation, mortgage bonds, and conveyancing procedure at the Deeds Registry.",
@@ -14,7 +14,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 108,
-    type: "notice",
+    type: "notice" as const,
     title: "Registered Microfinance Institutions — January to June 2026",
     excerpt:
       "Reserve Bank of Zimbabwe notice listing all credit-only microfinance institutions registered during the first half of 2026, per the Microfinance Act.",
@@ -25,7 +25,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 107,
-    type: "notice",
+    type: "notice" as const,
     title: "Excise & Special Surtax Return Submission and Payment",
     excerpt:
       "Public Notice No. 45/2026: due dates and submission process for excise and special surtax returns for airtime operators, spirit rebate users, and excise manufacturers.",
@@ -36,7 +36,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 106,
-    type: "notice",
+    type: "notice" as const,
     title: "Returns and Payments Due August 2026",
     excerpt:
       "Public Notice No. 44/2026: ZIMRA's schedule of tax return and payment due dates for the month ending 31 July 2026, covering PAYE, withholding taxes, and other levies.",
@@ -47,7 +47,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 104,
-    type: "notice",
+    type: "notice" as const,
     title: "Forfeiture of Unclaimed Funds in ZIMRA Prepayment Accounts",
     excerpt:
       "Public Notice No. 32/2026: unclaimed deposits held in ZIMRA prepayment accounts beyond the legal claim period are liable to forfeiture to the State.",
@@ -58,7 +58,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 103,
-    type: "notice",
+    type: "notice" as const,
     title: "Flexible Customs Administration Mechanism for Repatriation of Zimbabweans",
     excerpt:
       "ZIMRA notice on the flexible customs clearance mechanism for Zimbabweans repatriating from South Africa, covering personal effects, business goods, and motor vehicle clearance.",
@@ -69,7 +69,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 102,
-    type: "notice",
+    type: "notice" as const,
     title: "Supreme and High Court Calendar 2026",
     excerpt:
       "Official Judicial Service Commission notice setting out the 2026 sittings, vacations, and circuit court schedules for the Supreme Court and High Court of Zimbabwe.",
@@ -80,7 +80,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 101,
-    type: "notice",
+    type: "notice" as const,
     title: "The Deed Validation & Securitisation Programme",
     excerpt:
       "Government of Zimbabwe programme requiring all title deed holders to validate and securitise their deeds under SI 76 of 2025 — a straightforward, step-by-step guide.",
@@ -91,7 +91,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 3,
-    type: "article",
+    type: "article" as const,
     title: "Understanding Property Transfers & Deeds Registration",
     excerpt:
       "A step-by-step overview of conveyancing processes, title deed verifications, and property acquisition safeguards in Zimbabwean real estate.",
@@ -102,7 +102,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 2,
-    type: "article",
+    type: "article" as const,
     title: "Comprehensive Guide to Deceased Estates & Succession Planning",
     excerpt:
       "Protecting family legacies and assets requires proactive estate planning. Learn about wills, trust registrations, and estate administration in Zimbabwe.",
@@ -113,7 +113,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 1,
-    type: "article",
+    type: "article" as const,
     title: "Navigating Commercial Contracts in Zimbabwe: Key Considerations for 2026",
     excerpt:
       "An essential analysis of recent legal and statutory updates governing commercial agreements, dispute resolution mechanisms, and cross-border trade in Zimbabwe.",
@@ -122,4 +122,4 @@ export const newsItems: NewsItem[] = [
     date: "2026-01-15",
     author: "Mavula & Co. Legal Team",
   },
-].sort((a, b) => b.id - a.id);
+] as NewsItem[]).sort((a, b) => b.id - a.id);

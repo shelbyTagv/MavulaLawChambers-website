@@ -1,19 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { NewsItem } from "../src/types";
+import { newsItems } from "../src/data/news";
 
 const baseUrl = "https://mavulalawchambers.co.zw";
 
-// Load news items from JSON files directly
-const contentDir = path.resolve(process.cwd(), "content", "news");
-const newsFiles = fs.readdirSync(contentDir).filter((f) => f.endsWith(".json"));
-const newsItems: NewsItem[] = newsFiles
-  .map((file) => {
-    const content = fs.readFileSync(path.join(contentDir, file), "utf-8");
-    return JSON.parse(content) as NewsItem;
-  })
-  .sort((a, b) => b.id - a.id);
-
+// newsItems is now a plain TypeScript array — no file scanning needed.
 const routes = [
   "/",
   "/about",
@@ -35,3 +26,4 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 
 const targetPath = path.resolve(process.cwd(), "public", "sitemap.xml");
 fs.writeFileSync(targetPath, xml, "utf-8");
+console.log(`✅ sitemap.xml written with ${routes.length} URLs`);
