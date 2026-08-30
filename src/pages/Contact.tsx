@@ -9,22 +9,67 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
   });
+
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const emailSubject = encodeURIComponent(formData.subject || "Inquiry to Mavula & Co. Law Chambers");
-    const emailBody = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:${contactInfo.email}?subject=${emailSubject}&body=${emailBody}`;
+
+    // Client-side validation
+    if (!formData.name.trim()) {
+      alert("Please enter your name");
+      return;
+    }
+    if (!formData.email.trim() || !validateEmail(formData.email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+    if (!formData.message.trim()) {
+      alert("Please enter your message");
+      return;
+    }
+
+    // Build email subject
+    const emailSubject = formData.subject?.trim()
+      ? formData.subject
+      : `Website Enquiry from ${formData.name}`;
+
+    // Build email body with visitor's contact info
+    const bodyLines = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      formData.phone ? `Phone: ${formData.phone}` : null,
+      "",
+      "Message:",
+      formData.message,
+    ].filter(Boolean);
+
+    const emailBody = bodyLines.join("\n");
+
+    // Create and trigger mailto
+    const mailtoUrl = `mailto:${contactInfo.email}?subject=${encodeURIComponent(
+      emailSubject
+    )}&body=${encodeURIComponent(emailBody)}`;
+
+    window.location.href = mailtoUrl;
+
+    // Show confirmation message
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
@@ -85,6 +130,20 @@ export default function Contact() {
                       <p className="text-gray-400 font-body text-sm sm:text-base">{contactInfo.hours}</p>
                     </div>
                   </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold flex-shrink-0">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-heading font-semibold text-lg mb-1">Email</h3>
+                      <a href={`mailto:${contactInfo.email}`} className="text-gold hover:text-gold-light transition-colors font-body text-sm sm:text-base">
+                        {contactInfo.email}
+                      </a>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Online consultation prompt */}
@@ -108,10 +167,21 @@ export default function Contact() {
                   Send us a <span className="gold-gradient-text">Message</span>
                 </h2>
 
+                {submitted && (
+                  <div className="mb-6 p-4 bg-green-900/30 border border-green-700/50 rounded text-green-400 text-sm font-body">
+                    <p className="flex items-center gap-2">
+                      <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Opening your email client — please press send to complete your enquiry.
+                    </p>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-2 font-body">
-                      Your Name
+                      Your Name <span className="text-gold">*</span>
                     </label>
                     <input
                       type="text"
@@ -127,7 +197,7 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-2 font-body">
-                      Your Email Address
+                      Your Email Address <span className="text-gold">*</span>
                     </label>
                     <input
                       type="email"
@@ -142,24 +212,38 @@ export default function Contact() {
                   </div>
 
                   <div>
+                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-2 font-body">
+                      Phone Number <span className="text-gray-500 text-xs">(optional)</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full bg-black/40 text-white placeholder-gray-500 px-4 py-3 border border-gray-800 rounded focus:outline-none focus:border-gold transition-colors font-body"
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
+
+                  <div>
                     <label htmlFor="subject" className="block text-sm font-semibold text-gray-300 mb-2 font-body">
-                      Subject
+                      Subject <span className="text-gray-500 text-xs">(optional)</span>
                     </label>
                     <input
                       type="text"
                       id="subject"
                       name="subject"
-                      required
                       value={formData.subject}
                       onChange={handleChange}
                       className="w-full bg-black/40 text-white placeholder-gray-500 px-4 py-3 border border-gray-800 rounded focus:outline-none focus:border-gold transition-colors font-body"
-                      placeholder="Enter subject"
+                      placeholder="e.g. Corporate Law Inquiry"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-2 font-body">
-                      Message
+                      Message <span className="text-gold">*</span>
                     </label>
                     <textarea
                       id="message"
@@ -177,6 +261,10 @@ export default function Contact() {
                     Send Inquiry
                   </Button>
                 </form>
+
+                <p className="text-xs text-gray-500 text-center mt-4 font-body">
+                  <span className="text-gold">*</span> Required fields
+                </p>
               </div>
             </div>
           </div>
