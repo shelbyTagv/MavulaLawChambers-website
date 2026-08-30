@@ -40,7 +40,7 @@ export const expertiseAreas: ExpertiseArea[] = [
   {
     id: 4,
     title: "Mercantile, Shipping & Customs",
-    image: "/assets/images/placeholder-expertise-4.jpg",
+    image: "/assets/images/placeholder-expertise-2.jpg",
     items: [
       "Freight Insurance and Taxation",
       "Customs and Excise Disputes Handling",
@@ -50,7 +50,7 @@ export const expertiseAreas: ExpertiseArea[] = [
   {
     id: 5,
     title: "Conveyancing and Real Estate",
-    image: "/assets/images/placeholder-expertise-5.jpg",
+    image: "/assets/images/placeholder-expertise-2.jpg",
     items: [
       "Title Deed Digitalisation",
       "Real Estate Acquisitions and Disposals",

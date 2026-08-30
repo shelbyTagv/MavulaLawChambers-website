@@ -1,15 +1,7 @@
-import { useRef } from "react";
 import { expertiseAreas } from "../../data/expertise";
+import ScrollCarousel from "../ui/ScrollCarousel";
 
 export default function ExpertiseGrid() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="py-16 sm:py-20 bg-brand-dark">
       <div className="section-container">
@@ -20,63 +12,46 @@ export default function ExpertiseGrid() {
             </h2>
             <div className="w-16 h-0.5 bg-gold" />
           </div>
-          <button
-            onClick={scrollRight}
-            className="w-10 h-10 sm:w-12 sm:h-12 border border-gold/40 hover:border-gold hover:bg-gold/10 rounded-full flex items-center justify-center transition-all duration-300 group"
-            aria-label="Scroll to see more expertise areas"
-          >
-            <svg
-              className="w-5 h-5 text-gold group-hover:translate-x-0.5 transition-transform"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
         </div>
 
-        {/* Horizontally scrollable row */}
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {expertiseAreas.map((area) => (
-            <div
-              key={area.id}
-              className="flex-shrink-0 w-72 sm:w-80 snap-start group"
-            >
-              <div className="card-dark overflow-hidden flex h-full flex-col">
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={area.image}
-                    alt={area.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                  <h3 className="absolute bottom-4 left-4 text-lg font-heading font-bold text-white">
-                    {area.title}
-                  </h3>
-                </div>
-                <div className="p-4 flex flex-1 flex-col">
-                  {area.description && (
-                    <p className="text-gray-300 text-sm leading-relaxed">{area.description}</p>
-                  )}
-                  {area.items && (
-                    <ul className="mt-2 list-disc list-inside space-y-1 text-gray-300 text-sm leading-relaxed">
-                      {area.items.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+        <ScrollCarousel
+          items={expertiseAreas}
+          renderItem={(area) => (
+            <div className="card-dark overflow-hidden flex h-full flex-col group">
+              {/* Image container with title overlay */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={area.image}
+                  alt={area.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <h3 className="absolute bottom-4 left-4 text-lg font-heading font-bold text-white">
+                  {area.title}
+                </h3>
+              </div>
+
+              {/* Content section */}
+              <div className="p-4 flex flex-1 flex-col">
+                {area.description && (
+                  <p className="text-gray-300 text-sm leading-relaxed mb-3">{area.description}</p>
+                )}
+                {area.items && (
+                  <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm leading-relaxed">
+                    {area.items.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
-          ))}
-        </div>
+          )}
+          cardWidth={320}
+          gap={24}
+          showArrows={true}
+          arrowLabel={{ prev: "Previous expertise", next: "Next expertise" }}
+        />
       </div>
     </section>
   );
