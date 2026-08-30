@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { NewsItem } from "../../types";
+import { formatDate } from "../../utils/dateFormatter";
 
 interface NewsCardProps {
   item: NewsItem;
@@ -7,11 +8,6 @@ interface NewsCardProps {
 
 export default function NewsCard({ item }: NewsCardProps) {
   const isNotice = item.type === "notice";
-  const formattedDate = new Date(item.date).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
 
   return (
     <article className="card-dark group hover:-translate-y-1 flex flex-col h-full">
@@ -43,31 +39,30 @@ export default function NewsCard({ item }: NewsCardProps) {
           </Link>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-
-        {/* Date Badge - absolutely positioned INSIDE image container only */}
-        <span className="absolute top-3 left-3 bg-gold text-black text-xs font-bold px-3 py-1 rounded">
-          {formattedDate}
-        </span>
-
-        {/* Category Badge */}
-        {item.category && (
-          <span className="absolute top-3 right-3 bg-gold/80 text-black text-xs font-bold px-3 py-1 rounded">
-            {item.category}
-          </span>
-        )}
       </div>
 
       {/* Text content - separate block below image, no overlap */}
       <div className="p-4 flex flex-1 flex-col">
-        <h3 className="text-white font-heading font-semibold text-lg group-hover:text-gold transition-colors mb-2">
-          {isNotice ? (
-            <a href={item.pdfUrl} download target="_blank" rel="noopener noreferrer">
-              {item.title}
-            </a>
-          ) : (
-            <Link to={`/news/${item.id}`}>{item.title}</Link>
-          )}
-        </h3>
+        {/* Title and date header */}
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3 className="text-white font-heading font-semibold text-lg group-hover:text-gold transition-colors flex-1">
+            {isNotice ? (
+              <a href={item.pdfUrl} download target="_blank" rel="noopener noreferrer">
+                {item.title}
+              </a>
+            ) : (
+              <Link to={`/news/${item.id}`}>{item.title}</Link>
+            )}
+          </h3>
+          <span className="text-xs text-gray-400 font-body whitespace-nowrap">
+            {formatDate(item.date)}
+          </span>
+        </div>
+
+        {/* Category badge */}
+        {item.category && (
+          <span className="text-xs text-gold uppercase tracking-wide mb-2">{item.category}</span>
+        )}
 
         <p className="text-gray-400 text-sm mb-4 flex-1 line-clamp-2">{item.excerpt}</p>
 

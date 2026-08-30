@@ -3,6 +3,7 @@ import { reviews } from "../data/reviews";
 import PageHeader from "../components/ui/PageHeader";
 import Seo from "../components/Seo";
 import { pageMeta } from "../seo/siteMeta";
+import { formatDate } from "../utils/dateFormatter";
 
 export default function Reviews() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
@@ -13,7 +14,7 @@ export default function Reviews() {
 
   const renderStars = (rating: number) => {
     return (
-      <div className="flex items-center gap-0.5 mb-2" aria-label={`Rating: ${rating} out of 5 stars`}>
+      <div className="flex items-center gap-0.5 mb-3" aria-label={`Rating: ${rating} out of 5 stars`}>
         {Array.from({ length: 5 }, (_, i) => (
           <svg
             key={i}
@@ -38,7 +39,7 @@ export default function Reviews() {
           <div className="section-container">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {reviews.map((review) => (
-                <article key={review.id} className="card-dark group hover:-translate-y-1">
+                <article key={review.id} className="card-dark group hover:-translate-y-1 flex flex-col h-full">
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={review.image}
@@ -47,25 +48,27 @@ export default function Reviews() {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <span className="absolute top-3 left-3 bg-gold/90 text-black text-xs font-bold px-2 py-1 rounded">
-                      {new Date(review.date).toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </span>
                   </div>
-                  <div className="p-5">
+                  <div className="p-5 flex flex-1 flex-col">
+                    {/* Client name and date header */}
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <h3 className="text-lg font-heading font-bold text-white group-hover:text-gold transition-colors flex-1">
+                        {review.clientName}
+                      </h3>
+                      <span className="text-xs text-gray-400 font-body whitespace-nowrap">
+                        {formatDate(review.date)}
+                      </span>
+                    </div>
+
+                    {/* Rating stars */}
                     {review.rating !== undefined && renderStars(review.rating)}
-                    <h3 className="text-lg font-heading font-bold text-white mb-2 group-hover:text-gold transition-colors">
-                      Review by {review.clientName}
-                    </h3>
-                    <p className="text-gray-400 text-sm font-body mb-4">
+
+                    <p className="text-gray-400 text-sm font-body mb-4 flex-1">
                       {expandedId === review.id ? review.body : review.excerpt}
                     </p>
                     <button
                       onClick={() => toggleExpand(review.id)}
-                      className="text-gold hover:text-gold-light text-sm font-body font-semibold transition-colors flex items-center gap-1"
+                      className="text-gold hover:text-gold-light text-sm font-body font-semibold transition-colors flex items-center gap-1 mt-auto"
                     >
                       {expandedId === review.id ? "Show Less" : "Read More"}
                       <svg
