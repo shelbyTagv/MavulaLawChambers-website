@@ -10,14 +10,14 @@ export const expertiseAreas: ExpertiseArea[] = [
   {
     id: 1,
     title: "Civil & Criminal Litigation",
-    image: "/assets/images/placeholder-expertise-1.jpg",
+    image: "/assets/images/families_service.jpeg",
     description:
       "Litigation in both Inferior Courts (Magistrates Courts, Uniformed Personnel Tribunals, etc.) and Superior Courts (Constitutional Court, Supreme Court, High Court & Labour Court).",
   },
   {
     id: 2,
     title: "Mining & Investments",
-    image: "/assets/images/placeholder-expertise-2.jpg",
+    image: "/assets/images/mining_service.jpeg",
     items: [
       "Company Formation and Mergers",
       "Corporate Rescue Practice",
@@ -29,7 +29,7 @@ export const expertiseAreas: ExpertiseArea[] = [
   {
     id: 3,
     title: "Estates, Family & Inheritance",
-    image: "/assets/images/placeholder-expertise-3.jpg",
+    image: "/assets/images/families_service.jpeg",
     items: [
       "Wills and Estates Administration",
       "Family Trusts and Inheritance Planning",
@@ -40,7 +40,7 @@ export const expertiseAreas: ExpertiseArea[] = [
   {
     id: 4,
     title: "Mercantile, Shipping & Customs",
-    image: "/assets/images/placeholder-expertise-2.jpg",
+    image: "/assets/images/shipping_service.jpeg",
     items: [
       "Freight Insurance and Taxation",
       "Customs and Excise Disputes Handling",
@@ -50,7 +50,7 @@ export const expertiseAreas: ExpertiseArea[] = [
   {
     id: 5,
     title: "Conveyancing and Real Estate",
-    image: "/assets/images/placeholder-expertise-2.jpg",
+    image: "/assets/images/realEstate_service.jpeg",
     items: [
       "Title Deed Digitalisation",
       "Real Estate Acquisitions and Disposals",
