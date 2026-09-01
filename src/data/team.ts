@@ -18,7 +18,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: 3,
-    name: "Ngosilathi Sibanda",
+    name: "ngosilathi Sibanda",
     title: "Associate intern",
     photo: "/assets/images/ngosilathi-sibanda.jpeg",
     quote:

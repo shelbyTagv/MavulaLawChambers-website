@@ -19,14 +19,19 @@ export default function OurServices() {
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className="card-dark p-6 text-center group hover:-translate-y-1"
+                  className="card-dark overflow-hidden group hover:-translate-y-1"
                 >
-                  <div className="mb-4 text-3xl leading-none text-gold">
-                    {service.icon}
+                  <img
+                    src={service.image}
+                    alt={service.label}
+                    className="h-56 w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="p-6 text-center">
+                    <h3 className="text-lg font-heading font-bold text-white group-hover:text-gold transition-colors">
+                      {service.label}
+                    </h3>
                   </div>
-                  <h3 className="text-lg font-heading font-bold text-white group-hover:text-gold transition-colors">
-                    {service.label}
-                  </h3>
                 </div>
               ))}
             </div>
