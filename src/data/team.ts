@@ -18,9 +18,9 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: 3,
-    name: "ngosilathi Sibanda",
+    name: "Ngosilathi Sibanda",
     title: "Associate intern",
-    photo: "/assets/images/ngosilathi-sibanda.jpeg",
+    photo: "/assets/images/ngosilathi_sibanda.jpeg",
     quote:
       "Nkosilathi Sibanda is a seasoned legal practitioner specializing in criminal defense and advocacy. He earned his Bachelor of Laws (LL.B.) degree from the University of KwaZulu-Natal and brings years of dedicated hands-on experience in the criminal law sector. Known for his strategic litigation and deep commitment to justice, Nkosilathi vigorously protects his clients' constitutional rights and provides robust representation across complex criminal matters.",
   },
