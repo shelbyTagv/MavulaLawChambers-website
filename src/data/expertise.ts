@@ -10,7 +10,7 @@ export const expertiseAreas: ExpertiseArea[] = [
   {
     id: 1,
     title: "Civil & Criminal Litigation",
-    image: "/assets/images/families_service.jpeg",
+    image: "/assets/images/placeholder-news-1.jpg",
     description:
       "Litigation in both Inferior Courts (Magistrates Courts, Uniformed Personnel Tribunals, etc.) and Superior Courts (Constitutional Court, Supreme Court, High Court & Labour Court).",
   },
