@@ -6,7 +6,7 @@ export const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/images/mavula-logo.png`;
 export const businessContact = {
   phone: "+263 77 737 5296",
   voip: "+263 86 7701 0855",
-  email: "thuto.ms@gmail.com",
+  email: "mavula.co.lc@gmail.com",
   address: "Office 5, Philow Arcade, Stand 332, CBD, Plumtree, Zimbabwe",
   streetAddress: "Office 5, Philow Arcade, Stand 332, CBD",
   locality: "Plumtree",
