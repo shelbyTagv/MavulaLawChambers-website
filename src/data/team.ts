@@ -11,13 +11,30 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: 2,
-    name: "Harriet N Msebele",
-    title: "Office Administrator",
-    photo: "/assets/images/harriet-msebele.jpeg",
-    bio: "Our office administrator, Harriet holds a Bachelors Degree in Political Science and Political Administration (HPOS) with University of Zimbabwe. She has over 7 years in Administration work in both private and public sectors and is currently pursuing a Bachelor Degree in Law with African University (Zambia).",
+    name: "Thomas Sheunesu Gamure",
+    title: "Senior Associate & Head of Estate and Conveyancing Department",
+    photo: "/assets/images/Thomas Sheunesu.jpeg",
+    bio:
+      "Thomas Sheunesu Gamure is a Senior Associate and Head of the Estate and Conveyancing Department at Mavula and Company Law Chambers. A seasoned Legal Practitioner, Conveyancer, and Notary Public, Thomas brings 11 years of extensive experience across criminal and civil litigation in both the Magistrates' Courts and Superior Courts. Beyond his deep expertise in property transfers, estate planning, and court practice, he specializes in Environmental, Energy, and Mining Law, providing strategic legal counsel in complex, highly regulated industries.",
   },
   {
     id: 3,
+    name: "Harriet N Msebele",
+    title: "Office Administrator",
+    photo: "/assets/images/harriet-msebele.jpeg",
+    bio:
+      "Our office administrator, Harriet holds a Bachelors Degree in Political Science and Political Administration (HPOS) with University of Zimbabwe. She has over 7 years in Administration work in both private and public sectors and is currently pursuing a Bachelor Degree in Law with African University (Zambia).",
+  },
+  {
+    id: 4,
+    name: "Mutjideni Mpofu",
+    title: "Front Desk Secretary",
+    photo: "/assets/images/Mutjideni Mpofu.jpeg",
+    bio:
+      "Mutjideni Mpofu is the friendly face and welcoming voice at the front desk of Mavula & Co. Law Chambers. With over 3 years of client service experience, Mutjideni takes pride in keeping the office organized and ensuring every guest feels valued from the moment they walk through the door. Her versatility lies in her local multilingual gift, as she is fluent in TjiKalanga, IsiNdebele, SeTswana and ChiShona in addition to the official language of exchange-English.",
+  },
+  {
+    id: 5,
     name: "Nkosilathi Sibanda",
     title: "Associate intern",
     photo: "/assets/images/ngosilathi_sibanda.jpeg",
